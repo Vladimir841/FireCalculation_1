@@ -34,7 +34,7 @@ class FireCalculation {
                     // В начале года вычитаем расходы
                     capital = capitalMinusCost(capital, cost);
 
-                    // Инфляция на текущий год
+                    // Получаем данные об инфляции
                     inflation = inflationCurrentYear(indexForCalc);
 
                     // Увеличение расходов в результате инфляции
