@@ -17,7 +17,7 @@ class FireCalculation {
         startYear = sc.nextInt();
 
         try {
-            // Если год в диапозона 2002 - 2021 включительно тогда
+            // Если год в диапозоне 2002 - 2021 включительно тогда
             if (startYear >= minYear && startYear <= maxYear) {
 
                 indexForCalc = startYear - minYear;  // Индекс для обращения к данным в классе Constants
