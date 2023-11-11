@@ -3,17 +3,20 @@ import java.util.*;
 class FireCalculation {
     public static void main(String[] args) throws OutOfRangeException {
 
-        final int MINYEAR = 2002;            // Минимальное допустимое значение для ввода
-        final int MAXYEAR = 2021;            // Максимальное допустимое значение для ввода
+        // Минимальное допустимое значение для ввода
+        final int MINYEAR = 2002;
+
+        // Максимальное допустимое значение для ввода
+        final int MAXYEAR = 2021;
 
         Scanner sc = new Scanner(System.in);
-        final int STARTYEAR = sc.nextInt();  // Считываем данные от пользователя
+
+        // Считываем данные от пользователя
+        final int STARTYEAR = sc.nextInt();
 
         try {
             // Если год в диапозоне 2002 - 2021 включительно тогда
             if (STARTYEAR >= MINYEAR && STARTYEAR <= MAXYEAR) {
-
-                int indexForCalc;
 
                 // 100.0%
                 final double HUNDRED = 100.0;
@@ -21,10 +24,11 @@ class FireCalculation {
                 // Шаг прироста процента изъятия
                 final double GROWTHPERCENTAGE = 0.5;
 
-                double cost;
-                double capital;
-
                 for (double outProc = 0.0; outProc <= HUNDRED; outProc += GROWTHPERCENTAGE) {
+
+                    int indexForCalc;
+                    double cost;
+                    double capital;
 
                     //Если год начала жизни на проценты 2021 снимаем все и доживаем до 2022 года
                     if (STARTYEAR == MAXYEAR) {
@@ -32,14 +36,19 @@ class FireCalculation {
                         break;
                     }
 
-                    indexForCalc = STARTYEAR - MINYEAR;     // Индекс для обращения к данным в классе Constants
-                    capital = capitalInit(indexForCalc); // Инициализация переменной capital
-                    cost = capital * outProc / HUNDRED;  // Сколько изымается ( числом )
+                    // Индекс для обращения к данным в классе Constants
+                    indexForCalc = STARTYEAR - MINYEAR;
 
-                    double inflation;
-                    double changeIMB;
+                    // Инициализация переменной capital
+                    capital = capitalInit(indexForCalc);
+
+                    // Сколько изымается ( числом )
+                    cost = capital * outProc / HUNDRED;
 
                     for (int count = STARTYEAR; count < MAXYEAR; ++count) {
+
+                        double inflation;
+                        double changeIMB;
 
                         // В начале года вычитаем расходы
                         capital = capitalMinusCost(capital, cost);
@@ -61,7 +70,9 @@ class FireCalculation {
 
                         // Если тут ИСТИНА, значит при таком проценте изъятия не доживем до 2022 года
                         if (capital < cost) {
-                            outProc -= GROWTHPERCENTAGE; // Процент изъятия уменьшается на 0.5 ( шаг )
+
+                            // Процент изъятия уменьшается на 0.5 ( шаг )
+                            outProc -= GROWTHPERCENTAGE;
                             System.out.println(outProc);
                             break;
                         }
