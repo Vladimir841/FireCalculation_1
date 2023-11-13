@@ -30,7 +30,7 @@ class FireCalculation {
                     double cost;
                     double capital;
 
-                    //Если год начала жизни на проценты 2021 снимаем все и доживаем до 2022 года
+                    // Если год начала жизни на проценты 2021 снимаем все и доживаем до 2022 года
                     if (STARTYEAR == MAXYEAR) {
                         System.out.println(HUNDRED);
                         break;
@@ -65,7 +65,7 @@ class FireCalculation {
                         // Изменение капитала в зависимости от изменения ИМБ
                         capital += capital * changeIMB / HUNDRED;
 
-                        // Увеличиваен иднекс для обращения в класс Coststants
+                        // Увеличиваем иднекс для обращения в класс Constants
                         indexForCalc++;
 
                         // Если тут ИСТИНА, значит при таком проценте изъятия не доживем до 2022 года
