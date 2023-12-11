@@ -22,7 +22,7 @@ class FireCalculation {
 
             indexForCalc = STARTYEAR - MINYEAR;
             capital = Work.capitalInit(indexForCalc);
-            cost = capital * outProc / HUNDRED;
+            cost = Work.Rc(capital, outProc);
 
             for (int count = STARTYEAR; count < MAXYEAR; ++count) {
 
@@ -31,9 +31,9 @@ class FireCalculation {
 
                 capital = Work.capitalMinusCost(capital, cost);
                 inflation = Work.inflationCurrentYear(indexForCalc);
-                cost += Work.recalculcWithdrawalAmount(cost, inflation, HUNDRED);
+                cost += Work.recalculcWithdrawalAmount(cost, inflation);
                 changeIMB = Work.IndexChange(indexForCalc);
-                capital += capital * changeIMB / HUNDRED;
+                capital += Work.CapitalF(capital, changeIMB);
 
                 indexForCalc++;
 

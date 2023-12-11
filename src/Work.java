@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 public class Work {
+
+    public static double Rc(double capital, double outProc) {
+        return capital * outProc / 100;
+    }
     public static double capitalInit(int indexForCalc) {
         return Constants.MOEX_RATE[indexForCalc];
     }
@@ -10,13 +14,12 @@ public class Work {
     }
 
     public static double IndexChange(int imbYear) {
-        final double HUNDRED_1 = 100;
-        return (Constants.MOEX_RATE[imbYear + 1] - Constants.MOEX_RATE[imbYear]) * HUNDRED_1 /
+        return (Constants.MOEX_RATE[imbYear + 1] - Constants.MOEX_RATE[imbYear]) * 100 /
                 Constants.MOEX_RATE[imbYear];
     }
 
-    public static double recalculcWithdrawalAmount(double withdrawalAmount, double inflation, double hundred) {
-        return inflation / hundred * withdrawalAmount;
+    public static double recalculcWithdrawalAmount(double withdrawalAmount, double inflation) {
+        return inflation / 100 * withdrawalAmount;
     }
 
     public static double inflationCurrentYear(int indexForCalc) {
@@ -31,5 +34,9 @@ public class Work {
     public static int EnterYear() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
+    }
+
+    public static double CapitalF (double capital, double changeIMB) {
+        return capital * changeIMB / 100;
     }
 }
