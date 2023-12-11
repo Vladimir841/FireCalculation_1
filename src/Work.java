@@ -5,6 +5,7 @@ public class Work {
     public static double Rc(double capital, double outProc) {
         return capital * outProc / 100;
     }
+
     public static double capitalInit(int indexForCalc) {
         return Constants.MOEX_RATE[indexForCalc];
     }
