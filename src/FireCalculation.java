@@ -9,6 +9,8 @@ class FireCalculation {
         final double HUNDRED = 100.0;
         final double GROWTHPERCENTAGE = 0.5;
 
+        finish:
+
         for (double outProc = 0.0; outProc <= HUNDRED; outProc += GROWTHPERCENTAGE) {
 
             int indexForCalc;
@@ -39,16 +41,9 @@ class FireCalculation {
 
                 if (capital < cost) {
                     Work.Pr(outProc, GROWTHPERCENTAGE);
-                    break;
+                    break finish;
                 }
-            }
-            if (capital < cost) {
-                break;
             }
         }
     }
 }
-
-
-
-
