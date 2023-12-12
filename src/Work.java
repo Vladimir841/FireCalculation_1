@@ -14,19 +14,16 @@ public class Work {
 
 
     public static double CapitalF (double capital, double changeIMB) {
-
         return capital * changeIMB / 100;
     }
 
 
-    public static double Rc(double capital, double outProc)
-    {
+    public static double Rc(double capital, double outProc) {
         return capital * outProc / 100;
     }
 
 
     public static double capitalInit(int indexForCalc) {
-
         return Constants.MOEX_RATE[indexForCalc];
     }
 
@@ -42,8 +39,7 @@ public class Work {
     }
 
 
-    public static double inflationCurrentYear(int indexForCalc)
-    {
+    public static double inflationCurrentYear(int indexForCalc) {
         return Constants.INFLATION_RATE[indexForCalc];
     }
 
