@@ -1,32 +1,26 @@
 class FireCalculation {
     public static void main(String[] args) {
 
-        final int MINYEAR = 2002;
-        final int MAXYEAR = 2021;
-
-        final int STARTYEAR = Work.EnterYear();
-
-        final double HUNDRED = 100.0;
         final double GROWTHPERCENTAGE = 0.5;
 
         finish:
 
-        for (double outProc = 0.0; outProc <= HUNDRED; outProc += GROWTHPERCENTAGE) {
+        for (double outProc = 0.0; outProc <= Work.HUNDRED; outProc += GROWTHPERCENTAGE) {
 
             int indexForCalc;
             double cost;
             double capital;
 
-            if (STARTYEAR == MAXYEAR) {
-                System.out.println(HUNDRED);
+            if (Work.STARTYEAR == Work.MAXYEAR) {
+                System.out.println(Work.HUNDRED);
                 break;
             }
 
-            indexForCalc = STARTYEAR - MINYEAR;
+            indexForCalc = Work.STARTYEAR - Work.MINYEAR;
             capital = Work.capitalInit(indexForCalc);
             cost = Work.Rc(capital, outProc);
 
-            for (int count = STARTYEAR; count < MAXYEAR; ++count) {
+            for (int count = Work.STARTYEAR; count < Work.MAXYEAR; ++count) {
 
                 double inflation;
                 double changeIMB;
