@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Work {
     final static int MINYEAR = 2002;
-    final static int MAXYEAR = 2022;
+    final static int MAXYEAR = 2021;
     final static int STARTYEAR = enterYear();
     final static double HUNDRED = 100.0;
     final static double GROW = 0.5;
@@ -9,29 +9,21 @@ public class Work {
 
     public static int enterYear() {
         Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-        if (x == 2022) {
-            return x + 1;
-        }
-        return x;
+        return sc.nextInt();
     }
 
     public static double rasCapital(double outProc) {
 
         int indexForCalc = STARTYEAR - MINYEAR;
-        double capital = Constants.MOEX_RATE[indexForCalc];
+        double capital = Constants.MOEX_RATE[indexForCalc + 1];
         double cost = rc(capital, outProc);
 
-        for (int count = Work.STARTYEAR; count < Work.MAXYEAR; ++count) {
+        for (int count = STARTYEAR; count < MAXYEAR; ++count) {
 
             double inflation;
             double changeIMB;
 
-            if (capital < cost) {
-                outProc -= GROW;
-                out = true;
-                break;
-            }
+
 
             capital = Work.capitalMinusCost(capital, cost);
             inflation = Work.inflationCurrentYear(indexForCalc);
@@ -40,6 +32,12 @@ public class Work {
             capital += Work.CapitalF(capital, changeIMB);
 
             indexForCalc++;
+
+            if (capital < cost) {
+                outProc -= GROW;
+                out = true;
+                break;
+            }
         }
         return outProc;
     }
