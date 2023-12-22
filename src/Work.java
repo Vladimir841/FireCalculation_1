@@ -1,40 +1,35 @@
 import java.util.Scanner;
 public class Work {
-    final static int MINYEAR = 2002;
-    final static int MAXYEAR = 2021;
-    final static int STARTYEAR = enterYear();
-    final static double HUNDRED = 100.0;
-    final static double GROW = 0.5;
+    final static int minYear = 2002;
+    final static int maxYear = 2021;
+    final static double hundred = 100.0;
+    final static double grow = 0.5;
     public static boolean out = false;
-
-    public static int enterYear() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
-    }
+    final static int startYear = enterYear();
 
     public static double rasCapital(double outProc) {
+        int indexForCalc;
+        double capital;
+        double cost;
 
-        int indexForCalc = STARTYEAR - MINYEAR;
-        double capital = Constants.MOEX_RATE[indexForCalc + 1];
-        double cost = rc(capital, outProc);
+        indexForCalc = startYear - minYear;
+        capital = Constants.MOEX_RATE[indexForCalc + 1];
+        cost = capital * outProc / hundred;
 
-        for (int count = STARTYEAR; count < MAXYEAR; ++count) {
-
+        for (int count = startYear; count < maxYear; ++count) {
             double inflation;
             double changeIMB;
 
-
-
-            capital = Work.capitalMinusCost(capital, cost);
-            inflation = Work.inflationCurrentYear(indexForCalc);
-            cost += Work.recalculcWithdrawalAmount(cost, inflation);
-            changeIMB = Work.IndexChange(indexForCalc);
-            capital += Work.CapitalF(capital, changeIMB);
+            capital = capital - cost;
+            inflation = Constants.INFLATION_RATE[indexForCalc];
+            cost += inflation / hundred * cost;
+            changeIMB = IndexChange(indexForCalc, hundred);
+            capital += capital * changeIMB / hundred;
 
             indexForCalc++;
 
             if (capital < cost) {
-                outProc -= GROW;
+                outProc -= grow;
                 out = true;
                 break;
             }
@@ -42,29 +37,12 @@ public class Work {
         return outProc;
     }
 
-    public static double rc(double capital, double outProc) {
-        return capital * outProc / 100;
-    }
-
-    public static double capitalMinusCost(double capital, double cost) {
-        return capital - cost;
-    }
-
-    public static double inflationCurrentYear(int indexForCalc) {
-        return Constants.INFLATION_RATE[indexForCalc];
-    }
-
-    public static double recalculcWithdrawalAmount(double withdrawalAmount, double inflation) {
-        return inflation / 100 * withdrawalAmount;
-    }
-
-    public static double IndexChange(int imbYear) {
-        return (Constants.MOEX_RATE[imbYear + 1] - Constants.MOEX_RATE[imbYear]) * 100 /
+    public static double IndexChange(int imbYear, double hundred) {
+        return (Constants.MOEX_RATE[imbYear + 1] - Constants.MOEX_RATE[imbYear]) * hundred /
                 Constants.MOEX_RATE[imbYear];
     }
-
-    public static double CapitalF (double capital, double changeIMB) {
-        return capital * changeIMB / 100;
+    public static int enterYear() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
     }
-
 }

@@ -3,7 +3,7 @@ public class FireCalculation {
 
         double answer = 0.0;
 
-        for(double outProc = Work.GROW; outProc <= Work.HUNDRED; outProc += Work.GROW) {
+        for(double outProc = Work.grow; outProc <= Work.hundred; outProc += Work.grow) {
 
             answer = Work.rasCapital(outProc);
 
