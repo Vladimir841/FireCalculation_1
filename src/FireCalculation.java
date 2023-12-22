@@ -47,10 +47,12 @@ public class FireCalculation {
         return (Constants.MOEX_RATE[imbYear + 1] - Constants.MOEX_RATE[imbYear]) * hundred /
                 Constants.MOEX_RATE[imbYear];
     }
+
     public static int enterYear() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
     }
+
     public void initS(double outProc) {
         indexForCalc = startYear - minYear;
         capital = Constants.MOEX_RATE[indexForCalc + 1];
