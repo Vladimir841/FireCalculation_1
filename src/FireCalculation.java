@@ -6,7 +6,6 @@ public class FireCalculation {
     final static int maxYear = 2021;
     final static double hundred = 100.0;
     final static double grow = 0.5;
-    public static boolean out = false;
     final static int startYear = enterYear();
     int indexForCalc;
     double capital;
@@ -15,7 +14,6 @@ public class FireCalculation {
     double changeIMB;
     public static void main(String[] args) {
 
-        double answer = 0.0;
         FireCalculation exampleForCalc = new FireCalculation();
 
         for(double outProc = grow; outProc <= hundred; outProc += grow) {
