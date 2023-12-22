@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class FireCalculation {
-
     final static int minYear = 2002;
     final static int maxYear = 2021;
     final static double hundred = 100.0;
@@ -12,6 +11,7 @@ public class FireCalculation {
     double cost;
     double inflation;
     double changeIMB;
+
     public static void main(String[] args) {
         FireCalculation exampleForCalc = new FireCalculation();
 
@@ -25,7 +25,6 @@ public class FireCalculation {
             }
         }
     }
-
 
     public  void rasCapital(double outProc) {
         initS(outProc);
