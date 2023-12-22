@@ -13,7 +13,6 @@ public class FireCalculation {
     double inflation;
     double changeIMB;
     public static void main(String[] args) {
-
         FireCalculation exampleForCalc = new FireCalculation();
 
         for(double outProc = grow; outProc <= hundred; outProc += grow) {
