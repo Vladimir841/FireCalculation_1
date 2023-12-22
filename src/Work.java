@@ -6,27 +6,17 @@ public class Work {
     final static double grow = 0.5;
     public static boolean out = false;
     final static int startYear = enterYear();
+    int indexForCalc;
+    double capital;
+    double cost;
+    double inflation;
+    double changeIMB;
 
-    public static double rasCapital(double outProc) {
-        int indexForCalc;
-        double capital;
-        double cost;
 
-        indexForCalc = startYear - minYear;
-        capital = Constants.MOEX_RATE[indexForCalc + 1];
-        cost = capital * outProc / hundred;
-
+    public double rasCapital(double outProc) {
+        initS(outProc);
         for (int count = startYear; count < maxYear; ++count) {
-            double inflation;
-            double changeIMB;
-
-            capital = capital - cost;
-            inflation = Constants.INFLATION_RATE[indexForCalc];
-            cost += inflation / hundred * cost;
-            changeIMB = IndexChange(indexForCalc, hundred);
-            capital += capital * changeIMB / hundred;
-
-            indexForCalc++;
+            calculation();
 
             if (capital < cost) {
                 outProc -= grow;
@@ -44,5 +34,20 @@ public class Work {
     public static int enterYear() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
+    }
+    public void initS(double outProc) {
+        indexForCalc = startYear - minYear;
+        capital = Constants.MOEX_RATE[indexForCalc + 1];
+        cost = capital * outProc / hundred;
+    }
+
+    public void calculation() {
+        capital = capital - cost;
+        inflation = Constants.INFLATION_RATE[indexForCalc];
+        cost += inflation / hundred * cost;
+        changeIMB = IndexChange(indexForCalc, hundred);
+        capital += capital * changeIMB / hundred;
+
+        indexForCalc++;
     }
 }
