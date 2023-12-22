@@ -19,28 +19,22 @@ public class FireCalculation {
         FireCalculation exampleForCalc = new FireCalculation();
 
         for(double outProc = grow; outProc <= hundred; outProc += grow) {
-            answer = exampleForCalc.rasCapital(outProc);
+            exampleForCalc.rasCapital(outProc);
 
-            if (out) {
+            if (exampleForCalc.capital < exampleForCalc.cost) {
+                outProc -= grow;
+                System.out.println(outProc);
                 break;
             }
         }
-        System.out.println(answer);
     }
 
 
-    public  double rasCapital(double outProc) {
+    public  void rasCapital(double outProc) {
         initS(outProc);
         for (int count = startYear; count < maxYear; ++count) {
             calculation();
-
-            if (capital < cost) {
-                outProc -= grow;
-                out = true;
-                break;
-            }
         }
-        return outProc;
     }
 
     public static double IndexChange(int imbYear, double hundred) {
